@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class="container my-3">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <!-- submit으로 폼을 전송하면 post 방식으로 데이터가 요청 됨 -->
+    <form th:action="@{/question/create}" th:object="${questionForm}" method="post"> <!-- th:object <form>의 입력 항목들이 QuestionForm과 연결됨을 타임리프에게 알려주는 역할 -->
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+        <div class="mb-3">
+            <label for="subject" class="form-label">제목</label>
+            <input type="text" th:field="*{subject}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea th:field="*{content}" class="form-control" rows="10"></textarea>
+        </div>
+        <!-- sumbit => post 방식으로 데이터 요청 됨 -->
+        <input type="submit" value="저장하기" class="btn btn-primary my-2">
+    </form>
+</div>
